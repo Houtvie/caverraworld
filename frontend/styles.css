@@ -1794,3 +1794,8 @@ header:not(.sticky) {
 }
 
 /* Assume .nav-links.active and .hamburger i.fa-times are styled in your main CSS */
+.image-gallery img {
+    max-height: 300px; /* Adjust this value as needed */
+    width: auto;
+    object-fit: contain; /* This will crop the image to fit */
+}
