@@ -1,0 +1,26 @@
+{
+  "name": "caverra",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "scripts": {
+  "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+}
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Houtvie/caverraworld.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Houtvie/caverraworld/issues"
+  },
+  "homepage": "https://github.com/Houtvie/caverraworld#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
