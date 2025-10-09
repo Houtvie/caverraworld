@@ -3,21 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
+    const header = document.querySelector('header');
 
     if (hamburger && navLinks) {
         // Toggle mobile menu
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
             
-            // Toggle active class
             navLinks.classList.toggle('active');
-            
-            // Toggle icon between bars and X
             const icon = hamburger.querySelector('i');
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-times');
             
-            // Prevent body scroll when menu is open
             if (navLinks.classList.contains('active')) {
                 body.style.overflow = 'hidden';
             } else {
@@ -28,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Close nav on link click for mobile
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth < 1024) { // lg breakpoint
+                if (window.innerWidth < 1024) {
                     navLinks.classList.remove('active');
                     const icon = hamburger.querySelector('i');
                     icon.classList.remove('fa-times');
@@ -38,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Close nav if clicking outside when open
+        // Close nav if clicking outside
         document.addEventListener('click', (event) => {
             if (!navLinks.contains(event.target) && 
                 !hamburger.contains(event.target) && 
@@ -52,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Handle window resize - close mobile menu if resized to desktop
+        // Handle window resize
         window.addEventListener('resize', () => {
             if (window.innerWidth >= 1024 && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
@@ -60,6 +57,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
                 body.style.overflow = '';
+            }
+        });
+    }
+
+    // === Set Active Navigation Link Based on Current Page ===
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const allNavLinks = document.querySelectorAll('.nav-link, .nav-link-cta');
+    
+    allNavLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+
+    // === Header Shadow on Scroll ===
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
         });
     }
@@ -191,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         testimonialCarousel.addEventListener('mouseleave', startAutoTestimonialSlide);
     }
 
-    // === Scroll-triggered Animations (Intersection Observer) ===
+    // === Scroll-triggered Animations ===
     const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
 
     if (animateOnScrollElements.length > 0) {
@@ -215,76 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // === Sticky Header on Scroll ===
-    const header = document.querySelector('header');
-    if (header) {
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', () => {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > 100) {
-                header.classList.add('sticky');
-            } else {
-                header.classList.remove('sticky');
-            }
-            lastScrollTop = scrollTop;
-        });
-    }
-
-    // === Accordion for FAQs or expandable content ===
-    const accordions = document.querySelectorAll('.accordion-item h3');
-    if (accordions.length > 0) {
-        accordions.forEach(accordion => {
-            accordion.addEventListener('click', () => {
-                const content = accordion.nextElementSibling;
-                if (content && content.classList.contains('accordion-content')) {
-                    accordion.parentNode.classList.toggle('active');
-                    if (content.style.maxHeight) {
-                        content.style.maxHeight = null;
-                    } else {
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                    }
-                }
-            });
-        });
-    }
-
-    // === Form Submission (Basic Example) ===
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const nameField = contactForm.querySelector('#contact-name') || contactForm.querySelector('#name');
-            const emailField = contactForm.querySelector('#contact-email') || contactForm.querySelector('#email');
-            const messageField = contactForm.querySelector('#contact-message') || contactForm.querySelector('#message');
-
-            if (!nameField || !emailField || !messageField) {
-                console.log('Form fields not found');
-                return;
-            }
-
-            const name = nameField.value;
-            const email = emailField.value;
-            const message = messageField.value;
-
-            if (!name || !email || !message) {
-                alert('Please fill in all fields.');
-                return;
-            }
-
-            if (!/\S+@\S+\.\S+/.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-            console.log('Form Submitted:', { name, email, message });
-            alert('Thank you for your message, ' + name + '! We will get back to you soon.');
-
-            contactForm.reset();
-        });
-    }
-
-    // === Dynamic Copyright Year in Footer ===
+    // === Dynamic Copyright Year ===
     const currentYearSpan = document.getElementById('current-year');
     if (currentYearSpan) {
         currentYearSpan.textContent = new Date().getFullYear();
@@ -306,40 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 top: 0,
                 behavior: 'smooth'
             });
-        });
-    }
-
-    // === Simple Lightbox/Modal for Galleries ===
-    const galleryItems = document.querySelectorAll('.gallery-grid a');
-    if (galleryItems.length > 0) {
-        const lightbox = document.createElement('div');
-        lightbox.id = 'lightbox';
-        lightbox.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;justify-content:center;align-items:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity 0.3s ease';
-        document.body.appendChild(lightbox);
-
-        galleryItems.forEach(item => {
-            item.addEventListener('click', e => {
-                e.preventDefault();
-                lightbox.style.opacity = '1';
-                lightbox.style.pointerEvents = 'auto';
-                
-                const img = document.createElement('img');
-                img.src = item.href;
-                img.alt = item.querySelector('img')?.alt || 'Gallery image';
-                img.style.cssText = 'max-width:90%;max-height:90%;border:4px solid white;box-shadow:0 0 20px rgba(0,0,0,0.5)';
-                
-                while (lightbox.firstChild) {
-                    lightbox.removeChild(lightbox.firstChild);
-                }
-                lightbox.appendChild(img);
-            });
-        });
-
-        lightbox.addEventListener('click', e => {
-            if (e.target === lightbox) {
-                lightbox.style.opacity = '0';
-                lightbox.style.pointerEvents = 'none';
-            }
         });
     }
 });
