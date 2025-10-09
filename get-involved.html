@@ -7,27 +7,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dist/output.css">
+    <link rel="stylesheet" href="css/navigation.css">
 </head>
 <body class="font-sans text-gray-800 leading-relaxed bg-white">
-    <header class="bg-white py-4 border-b border-gray-300 sticky top-0 z-40 shadow-sm">
-        <div class="max-w-6xl mx-auto px-5 flex justify-between items-center">
-            <a href="index.html" class="font-heading text-3xl font-bold text-primary">Caverra World</a>
-            <nav>
-                <button class="hamburger lg:hidden text-3xl text-primary bg-transparent border-none cursor-pointer" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <ul class="nav-links hidden lg:flex list-none">
-                    <li><a href="index.html" class="ml-8 text-gray-800 font-medium text-lg py-1 border-b-2 border-transparent hover:border-primary hover:text-accent-gold transition-all duration-300">Home</a></li>
-                    <li><a href="about.html" class="ml-8 text-gray-800 font-medium text-lg py-1 border-b-2 border-transparent hover:border-primary hover:text-accent-gold transition-all duration-300">About Us</a></li>
-                    <li><a href="programs.html" class="ml-8 text-gray-800 font-medium text-lg py-1 border-b-2 border-transparent hover:border-primary hover:text-accent-gold transition-all duration-300">Programs & Events</a></li>
-                    <li><a href="impact.html" class="ml-8 text-gray-800 font-medium text-lg py-1 border-b-2 border-transparent hover:border-primary hover:text-accent-gold transition-all duration-300">Our Impact</a></li>
-                    <li><a href="partners.html" class="ml-8 text-gray-800 font-medium text-lg py-1 border-b-2 border-transparent hover:border-primary hover:text-accent-gold transition-all duration-300">Partnerships</a></li>
-                    <li><a href="get-involved.html" class="ml-8 text-gray-800 font-medium text-lg py-1 border-b-2 border-primary text-accent-gold transition-all duration-300">Get Involved</a></li>
-                    <li><a href="contact.html" class="ml-8 text-gray-800 font-medium text-lg py-1 border-b-2 border-transparent hover:border-primary hover:text-accent-gold transition-all duration-300">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+   <header class="bg-white py-3 md:py-4 border-b border-gray-300 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-5 flex justify-between items-center">
+        <!-- Logo - Responsive sizing -->
+        <a href="index.html" class="font-heading text-xl sm:text-2xl lg:text-3xl font-bold text-primary leading-tight">
+            Caverra Empowerment Foundation
+        </a>
+        
+        <!-- Navigation -->
+        <nav class="relative">
+            <!-- Hamburger Button - Only visible on mobile -->
+            <button class="hamburger lg:hidden text-3xl text-primary bg-transparent border-none cursor-pointer p-2" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Navigation Links -->
+            <ul class="nav-links hidden lg:flex list-none items-center">
+               caverraworld@gmail.com
+ <li><a href="index.html" class="block px-3 xl:px-4 py-2 text-gray-800 font-medium text-base lg:text-lg border-b-2 border-transparent hover:border-primary hover:text-accent-gold transition-all duration-300 border-primary">Home</a></li>
+                <li><a href="about.html" class="block px-3 xl:px-4 py-2 text-gray-800 font-medium text-base lg:text-lg border-b-2 border-transparent hover:border-primary hover:text-accent-gold transition-all duration-300 border-primary">About Us</a></li>
+                <li><a href="programs.html" class="block px-3 xl:px-4 py-2 text-gray-800 font-medium text-base lg:text-lg border-b-2 border-transparent hover:border-primary hover:text-accent-gold transition-all duration-300">Programs & Events</a></li>
+                <li><a href="impact.html" class="block px-3 xl:px-4 py-2 text-gray-800 font-medium text-base lg:text-lg border-b-2 border-transparent hover:border-primary hover:text-accent-gold transition-all duration-300">Our Impact</a></li>
+                <li><a href="partners.html" class="block px-3 xl:px-4 py-2 text-gray-800 font-medium text-base lg:text-lg border-b-2 border-transparent hover:border-primary hover:text-accent-gold transition-all duration-300">Partnerships</a></li>
+                <li><a href="get-involved.html" class="block px-3 xl:px-4 py-2 text-gray-800 font-medium text-base lg:text-lg border-b-2 border-transparent hover:border-primary hover:text-accent-gold transition-all duration-300">Get Involved</a></li>
+                <li><a href="contact.html" class="block px-3 xl:px-4 py-2 text-gray-800 font-medium text-base lg:text-lg border-b-2 border-transparent hover:border-primary hover:text-accent-gold transition-all duration-300">Contact Us</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
 
     <main>
         <section class="h-80 flex items-center justify-center text-white text-center bg-cover bg-center relative" style="background-image: url('images/get-involved-hero.jpg');">
@@ -226,15 +237,19 @@
                     <h3 class="text-accent-gold mb-5 text-xl font-heading">Contact Us</h3>
                     <p class="flex items-center mb-3">
                         <i class="fas fa-map-marker-alt mr-3 text-accent-gold"></i> 
-                        [Your Address Here], Nigeria
+                        23 Road, opposite F Close , Diamond Spa plaza, Festac Town, Lagos State, Nigeria.
+
                     </p>
                     <p class="flex items-center mb-3">
                         <i class="fas fa-phone mr-3 text-accent-gold"></i> 
-                        +234 800 123 4567
+                        +2349029387839
+
                     </p>
                     <p class="flex items-center mb-3">
                         <i class="fas fa-envelope mr-3 text-accent-gold"></i> 
-                        <a href="mailto:info@caverraworld.org" class="text-gray-300 hover:text-accent-gold transition-colors duration-300">info@caverraworld.org</a>
+                        <a href="mailto:caverraworld@gmail.com
+" class="text-gray-300 hover:text-accent-gold transition-colors duration-300">caverraworld@gmail.com
+</a>
                     </p>
                 </div>
                 <div>
